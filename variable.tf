@@ -1,5 +1,8 @@
-variable "cidr_block" {}
 variable "region" {}
+variable "wordpres-az-location" {}
+variable "database-az-location" {}
+variable "key_location"{}
+variable "cidr_block" {}
 variable "public_cidr1" {}
 variable "public_cidr2" {}
 variable "public_cidr3" {}
