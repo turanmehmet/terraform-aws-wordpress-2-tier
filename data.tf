@@ -1,7 +1,7 @@
 # This line pulls CentOS AMI 
 data "aws_ami" "centos" {
   most_recent = true
-  owners = ["679593333241"] # CentOS Owner
+  owners      = ["679593333241"] # CentOS Owner
   filter {
     name   = "name"
     values = ["CentOS Linux 7 x86_64 HVM *"]
@@ -12,7 +12,6 @@ data "aws_ami" "centos" {
   }
 }
 
-data  "aws_availability_zones" "all"{}
-output "availability_zones"{
-    value = data.aws_availability_zones.names
-}
+# Pull all az 
+data "aws_availability_zones" "all" {}
+
