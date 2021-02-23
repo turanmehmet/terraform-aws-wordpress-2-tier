@@ -30,7 +30,7 @@ resource "aws_instance" "wordpress" {
     user        = "centos"
     private_key = var.key_name
     # private_key = file("~/.ssh/id_rsa")
-    host        = aws_instance.wordpress.public_ip
+    host = aws_instance.wordpress.public_ip
   }
   tags = var.tags
 }

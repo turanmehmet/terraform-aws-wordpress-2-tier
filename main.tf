@@ -1,3 +1,3 @@
 module "two-tier-wordpress" {
-  source        = "/"
+  source = "/"
 }
