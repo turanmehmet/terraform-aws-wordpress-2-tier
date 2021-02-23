@@ -25,11 +25,12 @@ resource "aws_instance" "wordpress" {
   }
 
 
-#   connection {
-#     type        = "ssh"
-#     user        = "centos"
-#     private_key = file("~/.ssh/id_rsa")
-#     host        = aws_instance.wordpress.public_ip
-#   }
+  connection {
+    type        = "ssh"
+    user        = "centos"
+    private_key = var.key_name
+    # private_key = file("~/.ssh/id_rsa")
+    host        = aws_instance.wordpress.public_ip
+  }
   tags = var.tags
 }
