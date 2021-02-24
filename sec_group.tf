@@ -25,9 +25,6 @@ resource "aws_security_group" "wordpress" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = var.tags
-  depends_on = [
-    aws_vpc.main
-  ]
 }
 
 resource "aws_security_group" "database" {
@@ -57,7 +54,4 @@ resource "aws_security_group" "database" {
   }
 
   tags = var.tags
-  depends_on = [
-    aws_vpc.main
-  ]
 }

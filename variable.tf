@@ -1,6 +1,4 @@
 variable "region" {}
-variable "wordpress_az_location" {}
-variable "database_az_location" {}
 variable "key_name" {}
 variable "key_location" {}
 variable "cidr_block" {}
