@@ -5,7 +5,7 @@ resource "aws_instance" "wordpress" {
   associate_public_ip_address = true
   availability_zone           = var.wordpress_az_location
   vpc_security_group_ids      = [aws_security_group.wordpress.id]
-
+  tags = var.tags
   root_block_device {
     delete_on_termination = true
     volume_size           = 8
@@ -15,6 +15,14 @@ resource "aws_instance" "wordpress" {
   provisioner "file" {
     source      = "wordpress_userdata.sh"
     destination = "/tmp/wordpress_userdata.sh"
+      
+      connection {
+    type        = "ssh"
+    user        = "centos"
+    private_key = var.key_location
+    # private_key = file("~/.ssh/id_rsa")
+    host = aws_instance.wordpress.public_ip
+  }
   }
 
   provisioner "remote-exec" {
@@ -22,15 +30,14 @@ resource "aws_instance" "wordpress" {
       "chmod +x /tmp/wordpress_userdata.sh",
       "/tmp/wordpress_userdata.sh args",
     ]
-  }
-
-
-  connection {
+      
+      connection {
     type        = "ssh"
     user        = "centos"
-    private_key = var.key_name
+    private_key = var.key_location
     # private_key = file("~/.ssh/id_rsa")
     host = aws_instance.wordpress.public_ip
   }
-  tags = var.tags
-}
+  }
+
+}  
