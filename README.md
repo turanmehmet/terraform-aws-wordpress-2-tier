@@ -2,23 +2,9 @@
 Intallation wordpress server with 2 tier application
 
 
-Add the module source 
-```
-module "two-tier-wordpress" {
-  source = "terraform-aws-wordpress-2-tier/"
-}
-```
 
-Variables are defined in the terraform.tfvars file
+## Module information
 
-And run the following commands
-
-`terraform init`
-
-`terraform apply -var-file terraform.tfvars --auto-approve`
-
-
-# Module information
 Create VPC with: 
 
 3 Public Subnets attached to different AZ
@@ -56,3 +42,19 @@ tags = {
         Department = "IT"
 }
 ```
+# How to
+
+Add the module source 
+```
+module "two-tier-wordpress" {
+  source = "terraform-aws-wordpress-2-tier/"
+}
+```
+
+Variables are defined in the terraform.tfvars file
+
+And run the following commands
+
+`terraform init`
+
+`terraform apply -var-file terraform.tfvars --auto-approve`
